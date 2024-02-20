@@ -33,15 +33,3 @@ void swap_node(linked_list_t *node1, linked_list_t *node2, linked_list_t **list,
     node2->next = node1;
     node1->next = tmp;
 }
-
-void my_sort_list(linked_list_t **begin, int (*cmp)())
-{
-    linked_list_t *tmp = *begin;
-    // while (is_sorted(tmp, (*cmp))) {
-    while (tmp->next) {
-        if ((*cmp)(tmp->data, tmp->next->data))
-            swap_node(tmp->data, tmp->next->data, begin, (*cmp));
-        tmp = tmp->next;
-    }
-    //}
-}
