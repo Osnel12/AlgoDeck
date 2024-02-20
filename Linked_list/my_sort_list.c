@@ -23,6 +23,16 @@ void swap_node(linked_list_t *node1, linked_list_t *node2, linked_list_t **list,
 {
     linked_list_t *head = *list;
     linked_list_t *prev = NULL;
+    if (node1 == head) {
+        linked_list_t *tmp = node2->next;
+        node2->next = *list;
+        (*list)->next = tmp;
+        *list = node2;
+        return;
+    } else if (node2 == head) {
+        swap_node(node2, node1, list, (cmp));
+        return;
+    }
     while ((*cmp)(head->data, node1->data))
     {
         prev = head;
